@@ -1,0 +1,8 @@
+node_modules/
+*.js
+expensemanagerbot-451815-f08526779506.json
+*.zip
+*.map
+.env
+.serverless/
+event.json

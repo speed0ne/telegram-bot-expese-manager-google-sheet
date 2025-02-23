@@ -1,0 +1,27 @@
+service: expense-manager-bot
+frameworkVersion: '3'
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  architecture: arm64
+  memorySize: 512 # optional, in MB, default is 1024
+  timeout: 29 # optional, in seconds, default is 6
+  region: eu-central-1
+
+package:
+  include:
+    - ./handler/**
+    - ./node_modules/**
+    - ./*.js
+    - .env
+    - expensemanagerbot-451815-f08526779506.json
+
+functions:
+  telegramBot:
+    handler: ./dist/index.handler
+    events:
+      - httpApi:
+          method: POST
+          path: /tg/wb
